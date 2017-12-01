@@ -1,4 +1,4 @@
-const { partOne, partTwo } = require("./index");
+const { partOne, partTwo } = require("./day1");
 
 describe("2017 -- DAY 1", () => {
   it("PART 1 -- should make the sum if the next digit is the same", () => {

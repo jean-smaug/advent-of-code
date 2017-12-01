@@ -1,4 +1,4 @@
-module.exports = puzzle => {
+exports.partOne = puzzle => {
   let digit = "";
   let nextDigit = "";
   let sum = 0;
@@ -17,4 +17,8 @@ module.exports = puzzle => {
     }
   }
   return sum;
+};
+
+exports.partTwo = () => {
+  return 3;
 };

@@ -3,11 +3,11 @@ defmodule Aoc.Year2017.Day1 do
         digit = ""
         nextDigit = ""
 
-
-        String.to_charlist puzzle
+        puzzle 
+        |> String.to_charlist 
+        |> Enum.reduce(fn x -> 
+            IO.puts "voy a la plya issou bido mare"
+        end)
     end
     
-    def part2 puzzle do
-        "hello"
-    end
 end

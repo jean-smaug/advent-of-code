@@ -26,7 +26,7 @@ exports.partTwo = puzzle => {
   const puzzleLength = puzzle.length;
   const semiPuzzleLength = puzzleLength / 2;
 
-  for (let i = 0; i < puzzleLength; i++) {
+  for (let i = 0; i < semiPuzzleLength; i++) {
     digit = puzzle.charAt(i);
     nextDigit = puzzle.charAt(i + semiPuzzleLength);
 
@@ -35,7 +35,7 @@ exports.partTwo = puzzle => {
     }
 
     if (digit === nextDigit) {
-      sum += Number(digit);
+      sum += Number(digit * 2);
     }
   }
   return sum;

@@ -14,7 +14,8 @@ exports.partOne = (puzzlePath, callback) => {
     let minor = 0;
     let major = 0;
     const numbers = line.split("\t");
-    numbers.forEach(number => {
+    numbers.forEach(n => {
+      const number = Number(n);
       if (number > major) {
         major = number;
       }
@@ -23,7 +24,7 @@ exports.partOne = (puzzlePath, callback) => {
       }
     });
 
-    total += Number(major) - Number(minor);
+    total += major - minor;
   });
 
   rl.on("close", () => {

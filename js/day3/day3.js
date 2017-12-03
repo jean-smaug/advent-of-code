@@ -30,9 +30,7 @@ exports.partOne = puzzle => {
     });
 
     if (numberOfIteration === newLineLength) {
-      if (direction === "up") {
-        newLineLength += 2;
-      } else if (direction === "right") {
+      if (direction === "up" || direction === "down") {
         newLineLength += 1;
       }
       numberOfIteration = 0;
@@ -42,7 +40,33 @@ exports.partOne = puzzle => {
     numberOfIteration++;
   }
 
-  return 0;
+  const filteredItem = map.filter(item => item.value === parseInt(puzzle));
+
+  const total = map.reduce(
+    (accumulator, { direction }) => {
+      switch (direction) {
+        case "up":
+          accumulator.vertical += 1;
+          return accumulator;
+
+        case "down":
+          accumulator.vertical -= 1;
+          return accumulator;
+
+        case "right":
+          accumulator.horizontal += 1;
+          return accumulator;
+
+        case "left":
+          accumulator.horizontal -= 1;
+          return accumulator;
+      }
+    },
+    { vertical: 0, horizontal: 0 }
+  );
+
+  const result = Math.abs(total.horizontal) + Math.abs(total.vertical) - 1;
+  return result;
 };
 
 exports.partTwo = puzzle => {};

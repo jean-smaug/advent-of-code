@@ -1,5 +1,5 @@
 exports.partOne = puzzle => {
-  let map = []
+  let map = [];
   const directions = {
     right: {
       direction: "right",
@@ -16,19 +16,32 @@ exports.partOne = puzzle => {
     down: {
       direction: "down",
       nextDireaction: "right"
-    },
-  }
-  let direction = directions.right
-  for (let i = 1; i <= puzzle; i++) {
-    map.push({
-      direction: direction.direction,
-      value: i
-    })
-    if (true) {
-      direction = directions[direction.nextDireaction]
     }
+  };
+  let currentDirection = directions.right;
+  let newLineLength = 1;
+  let numberOfIteration = 1;
+  for (let i = 1; i <= puzzle; i++) {
+    let { direction, nextDireaction } = currentDirection;
+
+    map.push({
+      direction,
+      value: i
+    });
+
+    if (numberOfIteration === newLineLength) {
+      if (direction === "up") {
+        newLineLength += 2;
+      } else if (direction === "right") {
+        newLineLength += 1;
+      }
+      numberOfIteration = 0;
+      currentDirection = directions[nextDireaction];
+    }
+
+    numberOfIteration++;
   }
-  console.log(map)
+
   return 0;
 };
 

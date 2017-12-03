@@ -1,4 +1,8 @@
 exports.partOne = puzzle => {
+  if (1 === parseInt(puzzle)) {
+    return 0
+  }
+
   let map = [];
   const directions = {
     right: {
@@ -22,7 +26,10 @@ exports.partOne = puzzle => {
   let newLineLength = 1;
   let numberOfIteration = 1;
   for (let i = 1; i <= puzzle; i++) {
-    let { direction, nextDireaction } = currentDirection;
+    let {
+      direction,
+      nextDireaction
+    } = currentDirection;
 
     map.push({
       direction,
@@ -32,6 +39,7 @@ exports.partOne = puzzle => {
     if (numberOfIteration === newLineLength) {
       if (direction === "up" || direction === "down") {
         newLineLength += 1;
+        currentDirection = directions[nextDireaction];
       }
       numberOfIteration = 0;
       currentDirection = directions[nextDireaction];
@@ -40,10 +48,15 @@ exports.partOne = puzzle => {
     numberOfIteration++;
   }
 
-  const filteredItem = map.filter(item => item.value === parseInt(puzzle));
 
   const total = map.reduce(
-    (accumulator, { direction }) => {
+    (accumulator, {
+      direction
+    }, key) => {
+      if (key === map.length - 1) {
+        return accumulator
+      }
+
       switch (direction) {
         case "up":
           accumulator.vertical += 1;
@@ -61,11 +74,15 @@ exports.partOne = puzzle => {
           accumulator.horizontal -= 1;
           return accumulator;
       }
-    },
-    { vertical: 0, horizontal: 0 }
+    }, {
+      vertical: 0,
+      horizontal: 0
+    }
   );
 
-  const result = Math.abs(total.horizontal) + Math.abs(total.vertical) - 1;
+  //  -1 the first loop
+  const result = Math.abs(total.horizontal) + Math.abs(total.vertical);
+
   return result;
 };
 

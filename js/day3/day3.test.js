@@ -14,10 +14,6 @@ describe("2017 -- DAY 1", () => {
   });
 
   it("PART 2 -- should make the sum if the digit around are the same", () => {
-    // expect(partTwo("1212")).toBe(6);
-    // expect(partTwo("1221")).toBe(0);
-    // expect(partTwo("123425")).toBe(4);
-    // expect(partTwo("123123")).toBe(12);
-    // expect(partTwo("12131415")).toBe(4);
+    // go to OEIS
   });
 });

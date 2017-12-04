@@ -4,5 +4,8 @@
   },
   "scripts": {
     "tdd": "jest --watch"
+  },
+  "dependencies": {
+    "linebyline": "^1.3.0"
   }
 }
